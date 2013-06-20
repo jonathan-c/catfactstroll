@@ -1,0 +1,18 @@
+<br/>
+<%= button_to( "Generate different cat fact", root_path, :method => :get) %>
+<br/>
+<%= form_tag catfacts_create_path do %>
+<%= label_tag :phone %>
+<%= text_field_tag :to %><br/>
+<%= label_tag :message %>
+<%= text_field_tag :message, @catfact.message, options = { size: @catfact.message.length+5 } %><br/>
+<%= submit_tag "Send" %>
+<% end %>
+
+<br/><br/>
+Latest Cat Facts victim replies:
+<div>
+<% Catfact.replies.each do |reply| %>
+	<p>* <%= reply %></p>
+<% end %>
+</div>
