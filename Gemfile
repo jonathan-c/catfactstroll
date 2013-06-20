@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'twilio-ruby'
 gem 'therubyracer'
-gem 'debugger-linecache', '~> 1.1.2'
+# gem 'debugger-linecache', '~> 1.1.2'
 
 group :development do
 	gem 'debugger'
