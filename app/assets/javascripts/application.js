@@ -15,13 +15,13 @@
 //= require_tree .
 
 
-$(function() {
-	if ($("#replies").length > 0) {
-		setTimeout(updateReplies, 5000)
-	}
-});
-
-function updateReplies () {
-	$.getScript("/pages.js")
-	setTimeout(updateReplies, 5000);
-}
+// $(function() {
+// 	if ($("#replies").length > 0) {
+// 		setTimeout(updateReplies, 5000)
+// 	}
+// });
+// 
+// function updateReplies () {
+// 	$.getScript("/pages.js")
+// 	setTimeout(updateReplies, 5000);
+// }
