@@ -2,7 +2,7 @@ class Reply < ActiveRecord::Base
   attr_accessible :body, :from
   
   def send_text_message
-     @account_sid = 'AC618535f2a856c7b96e55c53c9a69b867'
+     @account_sid = 'APc52146402951b88617737ee3d4daa122'
      @auth_token = '17fbeecc9a6718e179cb654a77f841cf'
      @sandbox_number = '+16314985508'
      @from_number = '+16314985508'
