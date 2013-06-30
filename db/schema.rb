@@ -11,10 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619225629) do
+ActiveRecord::Schema.define(:version => 20130630173431) do
 
   create_table "catfacts", :force => true do |t|
     t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "replies", :force => true do |t|
+    t.string   "body"
+    t.string   "from"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
