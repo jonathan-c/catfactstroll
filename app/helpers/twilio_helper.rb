@@ -1,7 +1,7 @@
 module TwilioHelper
   class TwilioApi
-    @account_sid = 'AC618535f2a856c7b96e55c53c9a69b867'
-    @auth_token =  '17fbeecc9a6718e179cb654a77f841cf'
+    @account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    @auth_token =  ENV["TWILIO_AUTH_TOKEN"]
 
     # set up a client to talk to the Twilio REST API
     
