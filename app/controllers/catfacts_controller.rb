@@ -8,7 +8,7 @@ class CatfactsController < ApplicationController
     # end
     @catfact = Catfact.find_or_create_by_message(params[:message])
     @catfact.deliver(params[:to])
-    redirect_to root_path, :notify => "Sent!"
+    redirect_to root_path, :flash => { :success => "Sent!" }
   end
   
   private
