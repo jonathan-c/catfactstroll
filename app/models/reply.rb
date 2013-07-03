@@ -27,6 +27,7 @@ class Reply < ActiveRecord::Base
        puts @message
      elsif @request.downcase.include? "me"
        @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "All I hear is me me me. Why are you being so selfish? OK, reply to this message with 'unsubscribe' to stop receiving cat facts."})
+       puts @message
      end
    end
 end
