@@ -1,5 +1,6 @@
 class Reply < ActiveRecord::Base
   attr_accessible :body, :from
+  belongs_to :victim
   
   def send_text_message
      @account_sid = 'AC618535f2a856c7b96e55c53c9a69b867'
@@ -9,19 +10,23 @@ class Reply < ActiveRecord::Base
 
      # set up a client to talk to the Twilio REST API
      @client = Twilio::REST::Client.new(@account_sid, @auth_token)
-
-     # Uncomment when testing on the local database
-     # @example = Reply.create(body: "STOP", from: "+1XXXXXXX")
    
      @request = self.body
      @send_message_to = self.from
      @account = @client.account
-     if @request.downcase == "stop"
-       @error_message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "Witty reply to stop."  })
+     if @request.downcase.include? "unsubscribe"
+       @error_message = @account.sms.messages.create({
+         :from => @from_number, 
+         :to => @send_message_to, 
+         :body => "Great! You just subscribed to Cat Facts premium. You will now receive a new cat fact every 30 minutes. If you would like to unsubscribe please reply to this message with 'unsubscirbe'"  
+         })
         puts @error_message
-     else
-       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "Another witty reply." })
+        self.victim.toggle_subscription
+     elsif @request.downcase.include? "fuck"
+       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "You shouldn't use language like that. Why are you so mad? Cat Facts are scientifically proven to help cure anger." })
        puts @message
+     elsif @request.downcase.include? "me"
+       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "All I hear is me me me. Why are you being so selfish? OK, reply to this message with 'unsubscribe' to stop receiving cat facts."})
      end
    end
 end
