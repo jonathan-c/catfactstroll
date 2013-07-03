@@ -26,8 +26,11 @@ class Reply < ActiveRecord::Base
      @request = self.body
      @send_message_to = self.from
      @account = @client.account
+     if victim.messages_received == 9
+       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "Congrats! Since subscribing you have learned 9 new cat facts! Did you cats have 9 lives?" })
+       puts @message
      # If victim replies back with "remove".
-     if /(remove)/i.match(@request)
+     elsif /(remove)/i.match(@request)
        @error_message = @account.sms.messages.create({
          :from => @from_number, 
          :to => @send_message_to, 
