@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703014007) do
+ActiveRecord::Schema.define(:version => 20130703015805) do
 
   create_table "catfacts", :force => true do |t|
     t.string   "message"
@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(:version => 20130703014007) do
     t.datetime "updated_at", :null => false
   end
 
-# Could not dump table "victims" because of following StandardError
-#   Unknown type 'phone' for column 'number'
+  create_table "victims", :force => true do |t|
+    t.string   "phone"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.boolean  "premium_subscription", :default => false
+  end
 
 end

@@ -8,6 +8,7 @@ gem 'therubyracer'
 group :development do
 	gem 'debugger'
 	gem 'sqlite3'
+	gem 'annotate'
 end
 
 group :production do
