@@ -10,7 +10,7 @@
 #
 
 class Reply < ActiveRecord::Base
-  attr_accessible :body, :from
+  attr_accessible :body, :from, :victim_id
   belongs_to :victim
   
   def send_text_message
