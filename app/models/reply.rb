@@ -10,7 +10,7 @@
 #  victim_id  :integer
 #
 
-include 'TwilioHelper'
+include TwilioHelper
 
 class Reply < ActiveRecord::Base
   attr_accessible :body, :from, :victim_id
