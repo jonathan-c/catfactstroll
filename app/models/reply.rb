@@ -21,16 +21,16 @@ class Reply < ActiveRecord::Base
        TwilioApi.send_text(self.from, "Congrats! Since subscribing you have learned 9 new cat facts! Did you cats have 9 lives?")
      
      # If victim replies back with "remove".
-     elsif /(remove)/i.match(@request)
+     elsif /(remove)/i.match(self.body)
        TwilioApi.send_text(self.from, "Great! You just subscribed to Cat Facts premium. You'll now receive a new cat fact every 30 minutes. Reply with 'remove' to unsubscribe.")
        self.victim.toggle_subscription if self.victim.premium_subscription == false
      
      # If victim replies back with "fuck".
-     elsif /(fuck)/i.match(@request)
+     elsif /(fuck)/i.match(self.body)
        TwilioApi.send_text(self.from, "You shouldn't use language like that. Why are you so mad? Did you know cat facts are scientifically proven to help cure anger?")
      
      # If victim replies back with "me".
-     elsif /(me)/i.match(@request)
+     elsif /(me)/i.match(self.body)
        TwilioApi.send_text(self.from, "All I hear is me me me. Why are you being so selfish? OK, fine, reply to this message with 'remove' to stop receiving cat facts.")
      
      else
