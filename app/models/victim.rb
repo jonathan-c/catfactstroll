@@ -14,6 +14,6 @@ class Victim < ActiveRecord::Base
   has_many :replies
   
   def toggle_subscription
-    self.toggle(:premium_subscription)
+    toggle(:premium_subscription)
   end
 end
