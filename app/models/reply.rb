@@ -36,5 +36,6 @@ class Reply < ActiveRecord::Base
      else
        TwilioApi.send_text(self.from, "Cool story bro. I'll be sure to send you another cat fact later.")
      end
+     self.victim.messages_received+=1
    end
 end

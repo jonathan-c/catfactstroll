@@ -7,6 +7,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  premium_subscription :boolean          default(FALSE)
+#  messages_received    :integer          default(0)
 #
 
 class Victim < ActiveRecord::Base
