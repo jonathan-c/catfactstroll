@@ -26,7 +26,7 @@ class Reply < ActiveRecord::Base
      @request = self.body
      @send_message_to = self.from
      @account = @client.account
-     if @request.downcase.include? "unsubscribe"
+     if @request.downcase.include? "remove"
        @error_message = @account.sms.messages.create({
          :from => @from_number, 
          :to => @send_message_to, 
@@ -38,7 +38,7 @@ class Reply < ActiveRecord::Base
        @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "You shouldn't use language like that. Why are you so mad? Cat Facts are scientifically proven to help cure anger." })
        puts @message
      elsif @request.downcase.include? "me"
-       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "All I hear is me me me. Why are you being so selfish? OK, reply to this message with 'unsubscribe' to stop receiving cat facts."})
+       @message = @account.sms.messages.create({:from => @from_number, :to => @send_message_to, :body => "All I hear is me me me. Why are you being so selfish? OK, reply to this message with 'remove' to stop receiving cat facts."})
        puts @message
      end
    end
