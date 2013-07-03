@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 gem 'twilio-ruby'
 gem 'therubyracer'
 # gem 'debugger-linecache', '~> 1.1.2'
-gem "figaro"
+
 
 group :development do
 	gem 'debugger'
@@ -14,6 +14,7 @@ end
 
 group :production do
 	gem 'pg'
+	gem "figaro"
 end
 
 group :assets do
