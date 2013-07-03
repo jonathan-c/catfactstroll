@@ -1,5 +1,5 @@
 class Victim < ActiveRecord::Base
-  attr_accessible :number, :premium_subscription
+  attr_accessible :phone, :premium_subscription
   has_many :replies
   
   def toggle_subscription
