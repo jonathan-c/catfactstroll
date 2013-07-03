@@ -10,7 +10,7 @@
 #  victim_id  :integer
 #
 
-include 'TwilioHelper'
+include TwilioHelper
 
 class Reply < ActiveRecord::Base
   attr_accessible :body, :from, :victim_id
@@ -24,7 +24,7 @@ class Reply < ActiveRecord::Base
      # If victim replies back with "remove".
      elsif /(remove)/i.match(@request)
        TwilioApi.send_text(@send_message_to, "Great! You just subscribed to Cat Facts premium. You'll now receive a new cat fact every 30 minutes. Reply with 'remove' to unsubscribe.")
-       self.victim.toggle_subscription
+       self.victim.toggle_subscription if self.victim.premium_subscription == false
      
      # If victim replies back with "fuck".
      elsif /(fuck)/i.match(@request)
