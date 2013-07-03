@@ -17,13 +17,14 @@ class Reply < ActiveRecord::Base
   belongs_to :victim
   
   def send_text_message
+     self.victim.messages_received+=1
      if victim.messages_received == 9
        TwilioApi.send_text(self.from, "Congrats! Since subscribing you have learned 9 new cat facts! Did you cats have 9 lives?")
      
      # If victim replies back with "remove".
      elsif /(remove)/i.match(self.body)
-       TwilioApi.send_text(self.from, "Great! You just subscribed to Cat Facts premium. You'll now receive a new cat fact every 30 minutes. Reply with 'remove' to unsubscribe.")
        self.victim.toggle_subscription if self.victim.premium_subscription == false
+       TwilioApi.send_text(self.from, "Great! You just subscribed to Cat Facts premium. You'll now receive a new cat fact every 30 minutes. Reply with 'remove' to unsubscribe.")
      
      # If victim replies back with "fuck".
      elsif /(fuck)/i.match(self.body)
@@ -36,6 +37,5 @@ class Reply < ActiveRecord::Base
      else
        TwilioApi.send_text(self.from, "Cool story bro. I'll be sure to send you another cat fact later.")
      end
-     self.victim.messages_received+=1
    end
 end
