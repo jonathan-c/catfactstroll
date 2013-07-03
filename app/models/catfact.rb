@@ -21,6 +21,7 @@ class Catfact < ActiveRecord::Base
 
     @account = @client.account
     @message = @account.sms.messages.create({:from => '+16314985508', :to => victim.phone, :body => self.message})
+    victim.messages_received+=1
   end
   
   def generate_fact
