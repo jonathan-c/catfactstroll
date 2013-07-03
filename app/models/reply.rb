@@ -34,7 +34,7 @@ class Reply < ActiveRecord::Base
        @error_message = @account.sms.messages.create({
          :from => @from_number, 
          :to => @send_message_to, 
-         :body => "Great! You just subscribed to Cat Facts premium. You will now receive a new cat fact every 30 minutes. If you would like to unsubscribe please reply to this message with 'remove'."  
+         :body => "Great! You just subscribed to Cat Facts premium. You'll now receive a new cat fact every 30 minutes. Reply with 'remove' to unsubscribe."  
          })
         puts @error_message
         self.victim.toggle_subscription
